@@ -4,17 +4,9 @@ import numpy as np
 from PIL import Image
 import os
 
-# --------------------------
-# Load Model in Cache
-# --------------------------
-OUTPUT_PATH = "model.h5"  # Make sure this file is in your repo
-
 @st.cache_resource
 def load_model():
-    if not os.path.exists(OUTPUT_PATH):
-        st.error(f"Model file not found at {OUTPUT_PATH}. Please add it to the repo.")
-        st.stop()
-    model = tf.keras.models.load_model(OUTPUT_PATH)
+    model = tf.keras.models.load_model("asl_model.h5")  # your trained model
     return model
 
 model = load_model()
